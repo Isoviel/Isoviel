@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="js/site.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1>Animal Selector</h1>
+    <table>
+        <tr>
+            <td class="texttop">
+                <table>
+                    <tr>
+                        <td>
+                            Name:
+                        </td>
+                        <td>
+                            <input type="text" id="animalName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Animal ID Number:
+                        </td>
+                        <td>
+                            <input type="text" id="animalIDNumber" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Animal Common Name:
+                        </td>
+                        <td>
+                            <input type="text" id="animalCommonName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Genus:
+                        </td>
+                        <td>
+                            <input type="text" id="animalGenus" onkeyup="EnterSearch(event);" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Species:
+                        </td>
+                        <td>
+                            <input type="text" id="animalSpecies" />
+                        </td>
+                    </tr>
+                </table>
+
+                <p><button type="button" onclick="LoadAnimal();" id="searchbutton">Search</button></p>
+                <table>
+                    <tr>
+                        <td>
+                            Animal Image:
+                        </td>
+                        <td>
+                            <img id="editAnimalImage" src="#" class="picture" />
+                            <input type="file" id="fileinput" name="img" accept="image/*" onchange="LoadImage();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Animal Diet:
+                        </td>
+                        <td>
+                            <textarea type="text" id="editAnimalDiet" class="notes"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td class="texttop">
+                            Name:
+                        </td>
+                        <td>
+                            <input type="text" id="editAnimalName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Animal ID Number:
+                        </td>
+                        <td>
+                            <input type="text" id="editAnimalIDNumber" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Microchip Number:
+                        </td>
+                        <td>
+                            <input type="text" id="editMicrochipNumber" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Common Name:
+                        </td>
+                        <td>
+                            <input type="text" id="editCommonName" class="commonname" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Genus:
+                        </td>
+                        <td>
+                            <input type="text" id="editGenus" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Species:
+                        </td>
+                        <td>
+                            <input type="text" id="editSpecies" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date Aquired:
+                        </td>
+                        <td>
+                            <input type="text" id="editDateAquired" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sex:
+                        </td>
+                        <td>
+                            <input type="text" id="editSex" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date of Birth:
+                        </td>
+                        <td>
+                            <input type="text" id="editDateOfBirth" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Donor:
+                        </td>
+                        <td>
+                            <input type="text" id="editDonor" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Ownership:
+                        </td>
+                        <td>
+                            <input type="text" id="editOwnership" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Notes:
+                        </td>
+                        <td>
+                            <textarea type="text" id="editNotes" class="notes"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="button" onclick="PreviousAnimal();" id="previousbutton">Previous</button>
+                            <button type="button" onclick="NextAnimal();" id="nextbutton">Next</button>
+                            <button type="button" onclick="SaveAnimal();" id="savebutton">Save</button>
+                            <button type="button" onclick="AddAnimal();" id="addbutton">Add</button>
+                            <button type="button" onclick="CancelChange();" id="cancelbutton">Cancel</button>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            Weight:
+                        </td>
+                        <td>
+                            <input type="text" id="editWeight" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Feeding:
+                        </td>
+                        <td>
+                            <input type="text" id="editLastFeeding" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Shed:
+                        </td>
+                        <td>
+                            <input type="text" id="editLastShed" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Last Medication Given:
+                        </td>
+                        <td>
+                            <textarea typeof="text" id="editMedication" class="notes"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Medical Notes:
+                        </td>
+                        <td>
+                            <textarea typeof="text" id="editMedicalNotes" class="notes"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Deceased:
+                        </td>
+                        <td>
+                            <input type="checkbox" id="editDeceased" onclick="Dirtify();" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Date Deceased:
+                        </td>
+                        <td>
+                            <input type="text" id="editDateDeceased" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
