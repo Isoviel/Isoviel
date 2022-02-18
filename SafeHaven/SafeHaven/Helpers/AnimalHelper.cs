@@ -1,6 +1,7 @@
 ﻿using SafeHaven.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using System.Reflection;
@@ -14,7 +15,7 @@ namespace SafeHaven.Helpers
         {
             List<Dictionary<String, Object>> listOfAnimals = new List<Dictionary<string, object>>();
 
-            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-89IJ1T7\\SQLEXPRESS; Initial Catalog=Animal; Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["AnimalDB"].ToString()))
             {
                 connection.Open();
                 PropertyInfo[] properties = typeof(Animal).GetProperties();
@@ -47,7 +48,7 @@ namespace SafeHaven.Helpers
                         if (property.Name.ToLower() == "commonname")
                         {
                             whereClause += $"{property.Name} like @{property.Name}";
-                            parameters.Add(new SqlParameter(property.Name,"%" + value + "%"));
+                            parameters.Add(new SqlParameter(property.Name, "%" + value + "%"));
                         }
                         if (property.Name.ToLower() == "genus")
                         {
@@ -90,7 +91,7 @@ namespace SafeHaven.Helpers
 
         internal static int GetNextAnimalIDNumber()
         {
-            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-89IJ1T7\\SQLEXPRESS; Initial Catalog=Animal; Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["AnimalDB"].ToString()))
             {
                 connection.Open();
                 using (SqlCommand command = new SqlCommand("up_GetNextAnimalIDNumber", connection))
@@ -104,7 +105,7 @@ namespace SafeHaven.Helpers
         internal static int? Edit(Animal animal)
         {
             int? Id = 0;
-            using (SqlConnection connection = new SqlConnection("Data Source=DESKTOP-89IJ1T7\\SQLEXPRESS; Initial Catalog=Animal; Integrated Security=True"))
+            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["AnimalDB"].ToString()))
             {
                 connection.Open();
                 PropertyInfo[] properties = typeof(Animal).GetProperties();
